@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="navbar" style="margin-bottom:2vw">
+    <img src="images/logo.png" style="height:40px;float:left;margin-left:1%;margin-top:5px">
+    <a href="index.html" class="navbar-font" style="font-weight:600;font-size:22px">Team P1G5</a>
+    <a class="navbar-font" style="float:right">CONTACT</a>
+    <div class="dropdown navbar-font" style="float:right">
+      <button class="dropbtn">TEAM</button>
+      <div class="dropdown-content">
+        <a href="team_adrian.html">Adrian</a>
+        <a href="team_kallie.html">Kallie</a>
+        <a href="team_daniel.html">Daniel</a>
+        <a href="team_jeffrey.html">Jeffrey</a>
+        <a href="team_pranav.html">Pranav</a>
+        <a href="team_david.html">David</a>
+      </div>
+    </div>
+    <div class="dropdown navbar-font" style="float:right">
+      <button class="dropbtn">PROJECTS</button>
+      <div class="dropdown-content">
+        <a href="proj_maze_game.html">Maze Game</a>
+        <a href="proj_ascii_art.html">ASCII Art</a>
+        <a href="#">Link 3</a>
+      </div>
+    </div>
+  </div>
+    
+  <div>
+    <a href="index.html" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size:1.3vw;color:white; margin:2vw">BACK</a>
+  </div>
+  
+  <br><br>
+  <h1 class="name-header">MAZE GAME</h1>
+  <p class="subtitle">Sep - Nov 2023</p>
+
+  <iframe style="display:block;margin:auto" width="420" height="315"src="https://www.youtube.com/embed/30jWUg5iUlI"></iframe>
+
+  <br><br><br><br>
+  <h2 class="sub-header">CREATION PROCESS</h2>
+
+  <p class="block-text">We decided to build this game using Snap4Arduino, as it seemed like a good introduction to learning how to work with Arduino. Our game is essentially a maze runner, where the player navigates through a series of mazes using an Arduino controller.
+  </p>
+
+  <div class="flex-container" style="margin-left:10vw;margin-right:10vw;margin-top:3vw;">
+    <img src="images/maze_game_1_1.png" style="width:20vw;border-radius:2vw;margin-right:2vw">
+    <img src="images/maze_game_1_2.png" style="width:20vw;height:fit-content;border-radius:2vw">
+    <div class="v-flex">
+      <p class="wrap-text">Early on, we first realized that in order to be able to control the player and have the camera follow the player around the maze, we needed to actually move the background itself instead of the player. This created essentially the same effect, where the player is centered on the screen while moving.</p>
+      <p class="wrap-text">We created some placeholder maps that consisted of just black lines on a transparent background. In our code, we made it so that if the wall sprite detected the player sprite color, it broadcasted a message that would reset the game. Even though the code for resetting is only one block long, it will be useful later as we add more things.
+      </p>
+    </div>
+  </div>
+
+  <div class="flex-container" style="margin-left:10vw;margin-right:10vw;margin-top:3vw;">
+    <img src="images/maze_game_2_1.png" style="width:25vw;height:20vw;border-radius:2vw;margin-right:2vw">
+    <img src="images/maze_game_2_2.png" style="width:20vw;height:10vw;border-radius:2vw;margin-right:2vw">
+    <div class="v-flex">
+      <p class="wrap-text">We made several levels worth of maze maps using a drawing program. On each map is a yellow win zone that the player must reach in order to complete the map and immediately progress to the next one.</p>
+      <p class="wrap-text">This was achieved by creating a new sprite for the landing zone and implementing the exact same code for movement, as it counts as part of the background. In our player code, we added a simple loop that broadcasted a message when it detects the yellow color of the win zone. This message would be picked up by the wall, which would then switch maps and reset the position. Each map is a different costume in the map sprite.
+      </p>
+    </div>
+  </div>
+
+  <div class="flex-container" style="margin-left:10vw;margin-right:10vw;margin-top:3vw;">
+    <img src="images/maze_game_3_1.png" style="width:20vw;height:20vw;border-radius:2vw;margin-right:2vw">
+    <img src="images/maze_game_3_2.png" style="width:25vw;height:20vw;border-radius:2vw;margin-right:2vw">
+    <img src="images/maze_game_3_3.png" style="width:5vw;border-radius:2vw;margin-right:2vw">
+  </div>
+
+  <div class="flex-container" style="margin-left:10vw;margin-right:10vw;margin-top:3vw;">
+    <img src="images/maze_game_4_1.png" style="width:25vw;height:20vw;border-radius:2vw;margin-right:2vw">
+    <img src="images/maze_game_4_2.png" style="width:25vw;height:20vw;border-radius:2vw;margin-right:1vw">
+    <div class="v-flex">
+      <p class="wrap-text">We started implementing an Arduino joystick to use as a controller in the game. In the breadboard configuration, we wired the ground and 5v to the power rails. For the joystick, we wired GND (the one next to U/D) to the ground power rail and U/D+ and L/R+ to the 5v power rail. We connected U/D to A1 (analog 1) and L/R to A2 (analog 2).</p>
+      <p class="wrap-text">In Snap4Arduino, we read the joystick input as X and Y values from A2 and A1. The values range from 0 to 1023 (moving the joystick all the way to one side and then all the way to the other side), and the neutral position is around 500. So, we can shift the input down by 500 and treat it as the speed of the player (around -500 to 500).
+      </p>
+    </div>
+  </div>
+
+</body>
+</html>
