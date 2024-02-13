@@ -14,15 +14,15 @@ if ($conn->connect_error) {
 echo "Connected successfully";
 
 // Create database
-/*$sql = "CREATE DATABASE myDB;";
+$sql = "CREATE DATABASE myDB;";
 if ($conn->query($sql) === TRUE) {
     echo "Database created successfully";
 } else {
     echo "Error creating database: " . $conn->error;
-}*/
+}
 $conn->query("USE myDB;");
 // Add people table
-/*$sql = "CREATE TABLE people (
+$sql = "CREATE TABLE people (
     ID int primary key auto_increment,
     fName varchar(20),
     lName varchar(20),
@@ -32,7 +32,7 @@ if ($conn->query($sql) === TRUE) {
 	echo "people table created successfully";
 } else {
 	echo "Error creating people table" . $conn->error;
-}*/
+}
 $conn->query("TRUNCATE TABLE people");
 // Add people
 $sql = "INSERT INTO people (fName, lName, bio)

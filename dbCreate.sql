@@ -1,5 +1,5 @@
 CREATE DATABASE myDB;
-us myDB;
+use myDB;
 
 CREATE TABLE people (
     ID int primary key auto_increment,
